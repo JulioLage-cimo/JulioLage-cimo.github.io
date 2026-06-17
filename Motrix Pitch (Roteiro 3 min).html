@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Motrix — Pitch (Roteiro 3 min)</title>
+<meta name="viewport" content="width=1920" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Hanken+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+  @page { size: 1920px 1080px; margin: 0; }
+
+  /* --- slide-local helpers for this roteiro deck --- */
+  .sensor-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 72px; align-items: center; flex: 1; }
+  .sensor-card {
+    background: var(--motrix-bg-2);
+    border: 1px solid var(--motrix-rule);
+    padding: 32px 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .sensor-card .sc-head {
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--motrix-rule-soft); padding-bottom: 18px;
+  }
+  .sensor-card .sc-title { font-family: var(--font-sans); font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--motrix-sand); font-weight: 600; }
+  .sensor-card .sc-status { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-sans); font-size: 14px; color: var(--motrix-accent); font-weight: 500; }
+  .sensor-card .sc-status .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--motrix-accent); }
+  .sensor-card .sc-tele { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .sensor-card .sc-tele .cell { padding: 8px 18px; border-left: 1px solid var(--motrix-rule-soft); }
+  .sensor-card .sc-tele .cell:first-child { border-left: 0; padding-left: 0; }
+  .sensor-card .sc-tele .cell .lab { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--motrix-ink-dim); font-weight: 500; }
+  .sensor-card .sc-tele .cell .val { font-family: var(--font-num); font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: var(--motrix-sand); line-height: 1; margin-top: 8px; }
+  .sensor-card .sc-tele .cell .val .u { font-size: 14px; font-weight: 500; color: var(--motrix-sand-dim); margin-left: 3px; }
+  .sensor-card .sc-stream { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--motrix-rule-soft); }
+  .sensor-card .sc-stream .r { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--motrix-rule-soft); }
+  .sensor-card .sc-stream .r:last-child { border-bottom: 0; }
+  .sensor-card .sc-stream .r .k { font-family: var(--font-sans); font-size: 15px; color: var(--motrix-ink-dim); font-weight: 300; }
+  .sensor-card .sc-stream .r .v { font-family: var(--font-num); font-size: 17px; font-weight: 600; color: var(--motrix-ink); }
+
+  .desk-grid { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 64px; align-items: center; flex: 1; }
+
+  .sensor-stack { display: flex; flex-direction: column; gap: 26px; }
+  .sensor-device {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    padding: 14px 0 6px;
+  }
+  .sensor-device::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 52% 70% at 50% 46%, rgba(204,191,167,0.16), transparent 72%);
+    pointer-events: none;
+  }
+  .sensor-device img { position: relative; width: 340px; height: auto; display: block; }
+  .sensor-device .dev-cap {
+    position: absolute; bottom: -2px; right: 0;
+    font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--motrix-sand-dim); font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<template id="__bundler_thumbnail" data-bg-color="#0d1814">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0d1814"></rect>
+    <path d="M 120 560 L 320 380 L 440 470 L 620 250 L 800 440 L 980 300 L 1080 380" fill="none" stroke="#ccbfa7" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"></path>
+    <path d="M 120 600 L 360 470 L 560 540 L 760 410 L 1080 520" fill="none" stroke="#ccbfa7" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" opacity="0.3"></path>
+    <text x="600" y="700" font-family="Georgia, serif" font-size="92" font-weight="600" letter-spacing="-3" fill="#ccbfa7" text-anchor="middle">Motrix</text>
+  </svg>
+</template>
+
+<deck-stage no-rail>
+
+<!-- ====== 01 — CAPA ====== -->
+<section data-screen-label="01 Capa">
+  <svg class="bg-mountain" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMax slice">
+    <path d="M 0 880 L 220 720 L 340 800 L 540 540 L 760 740 L 980 480 L 1240 700 L 1480 560 L 1700 780 L 1920 660 L 1920 1080 L 0 1080 Z" fill="#ccbfa7" opacity="0.06"></path>
+    <path d="M 0 940 L 240 820 L 460 880 L 700 700 L 900 820 L 1140 660 L 1380 800 L 1620 720 L 1920 820 L 1920 1080 L 0 1080 Z" fill="#ccbfa7" opacity="0.04"></path>
+  </svg>
+
+  <div class="frame">
+    <div class="topbar">
+      <div class="mark"><span class="name">MOTRIX</span></div>
+      <div class="nav"><span>PITCH</span><span class="sep">·</span><span>3 MIN</span><span class="sep">·</span><span>2026</span></div>
+    </div>
+
+    <div class="cover cover-grid" style="padding:0; flex:1;">
+      <div class="cover-left">
+        <div class="big-mark"></div>
+        <div class="wordmark">Motrix</div>
+      </div>
+      <div class="cover-right">
+        <div class="tagline">
+          O <em>Waze das finanças</em><br>
+          do motorista.
+        </div>
+        <div class="meta">
+          <span>Inteligência operacional</span>
+          <span>para motoristas autônomos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Apresentação de projeto</span>
+      <span>Sensor · App · Inteligência</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 02 — COMO A IDEIA SURGIU ====== -->
+<section data-screen-label="02 Como a ideia surgiu">
+  <div class="frame">
+    <div class="topbar">
+      <div class="mark"><span class="glyph"></span><span class="name">MOTRIX</span></div>
+      <div class="nav"><span>02</span><span class="sep">/</span><span>08</span><span class="sep">·</span><span>A ORIGEM</span></div>
+    </div>
+
+    <div style="margin-top:60px;">
+      <div class="eyebrow">Como a ideia surgiu</div>
+      <div class="rule rule-short" style="margin:20px 0 32px;"></div>
+      <h1 class="display" style="max-width: 24ch; font-size: 88px;">
+        Começou com uma conta que <em>nunca fechava.</em>
+      </h1>
+    </div>
+
+    <div class="col-2" style="margin-top: 56px; gap: 96px; align-items: start;">
+      <div>
+        <p class="lead">Conversando com motoristas de aplicativo, percebemos sempre o mesmo padrão: todos sabiam quanto tinham faturado no dia, mas nenhum sabia dizer quanto realmente havia sobrado.</p>
+        <p class="body" style="margin-top: 20px;">
+          Combustível, manutenção e desgaste do carro ficam invisíveis. O faturamento é comemorado; o lucro, ninguém calcula. Um carro rodando o dia inteiro pode estar, na prática, trabalhando no prejuízo — e o motorista só descobre quando o veículo quebra.
+        </p>
+        <p class="kicker" style="margin-top: 28px;">O problema nunca foi conseguir mais corridas. Era enxergar o resultado real de cada uma.</p>
+      </div>
+
+      <div>
+        <div class="eyebrow" style="font-size:11px;">A conta que ninguém faz</div>
+        <div class="rule" style="margin:14px 0 0;"></div>
+        <div class="rows">
+          <div class="row"><div class="idx">BRUTO</div><div class="label">R$ <em>12,00</em></div><div class="desc">O valor da corrida o número que aparece na tela e que o motorista comemora.</div></div>
+          <div class="row"><div class="idx">CUSTOS</div><div class="label">− R$ <em>4,00</em></div><div class="desc">Combustível, manutenção, desgaste e depreciação a cada quilômetro rodado.</div></div>
+          <div class="row"><div class="idx">REAL</div><div class="label">R$ <em>8,00</em></div><div class="desc">O que de fato sobrou. No trânsito parado, pode virar prejuízo.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>02 · A origem</span>
+      <span>MOTRIX</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 03 — O SENSOR ====== -->
+<section data-screen-label="03 O sensor">
+  <div class="frame">
+    <div class="topbar">
+      <div class="mark"><span class="glyph"></span><span class="name">MOTRIX</span></div>
+      <div class="nav"><span>03</span><span class="sep">/</span><span>08</span><span class="sep">·</span><span>O SENSOR</span></div>
+    </div>
+
+    <div style="margin-top:52px;">
+      <div class="eyebrow">O Sensor</div>
+      <div class="rule rule-short" style="margin:18px 0 28px;"></div>
+      <h1 class="h1" style="max-width: 22ch; font-size: 64px;">
+        Um sensor que <em>lê o carro por dentro.</em>
+      </h1>
+    </div>
+
+    <div class="sensor-grid" style="margin-top: 12px;">
+      <div>
+        <p class="lead" style="max-width: 44ch;">Um adaptador plug-and-play que se conecta à porta OBD-II — presente em praticamente todo carro. Sem instalação, sem oficina.</p>
+        <div class="rows" style="margin-top: 24px;">
+          <div class="row"><div class="idx">01</div><div class="label"><em>Conecta</em></div><div class="desc">Encaixa na porta OBD-II do veículo. Pronto em segundos, sem técnico.</div></div>
+          <div class="row"><div class="idx">02</div><div class="label"><em>Lê</em></div><div class="desc">Consumo real, rotação, temperatura, falhas e comportamento do motord ireto da central do carro.</div></div>
+          <div class="row"><div class="idx">03</div><div class="label"><em>Sincroniza</em></div><div class="desc">Envia tudo ao app em tempo real. O custo real de rodar deixa de ser estimativa.</div></div>
+        </div>
+      </div>
+
+      <div class="sensor-stack">
+        <div class="sensor-device">
+          <img src="assets/sensor-elm327.png" alt="Sensor OBD-II ELM327">
+          <span class="dev-cap">Adaptador OBD-II</span>
+        </div>
+        <div class="sensor-card">
+          <div class="sc-head">
+            <span class="sc-title">Leitura ao vivo</span>
+            <span class="sc-status"><span class="dot"></span>Conectado</span>
+          </div>
+          <div class="sc-tele">
+            <div class="cell"><div class="lab">Consumo</div><div class="val">11,8<span class="u">km/l</span></div></div>
+            <div class="cell"><div class="lab">Arref.</div><div class="val">92<span class="u">°C</span></div></div>
+            <div class="cell"><div class="lab">Bateria</div><div class="val">13,9<span class="u">V</span></div></div>
+            <div class="cell"><div class="lab">Rotação</div><div class="val">820<span class="u">rpm</span></div></div>
+          </div>
+          <div class="sc-stream">
+            <div class="r"><span class="k">Custo operacional medido</span><span class="v">R$ 0,71 / km</span></div>
+            <div class="r"><span class="k">Códigos de falha (DTC)</span><span class="v">Nenhum</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>03 · O sensor</span>
+      <span>Hardware · captura de dados</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 04 — A SOLUÇÃO (APP MOBILE) ====== -->
+<section data-screen-label="04 A solução · app mobile">
+  <div class="frame">
+    <div class="topbar">
+      <div class="mark"><span class="glyph"></span><span class="name">MOTRIX</span></div>
+      <div class="nav"><span>04</span><span class="sep">/</span><span>08</span><span class="sep">·</span><span>A SOLUÇÃO</span></div>
+    </div>
+
+    <div class="proof-grid" style="margin-top: 44px;">
+      <div class="proof-text">
+        <div class="eyebrow">A Solução · App</div>
+        <div class="rule rule-short" style="margin:18px 0 26px;"></div>
+        <h1 class="h1" style="max-width: 16ch; font-size: 58px;">
+          O lucro real, <em>antes de aceitar.</em>
+        </h1>
+        <p class="lead" style="margin-top: 26px; max-width: 42ch;">
+          O app cruza o sensor com os dados da corrida e dá o veredicto na hora. Não é protótipo: esta é uma captura de um teste real em campo, em Teresina-PI.
+        </p>
+
+        <div class="rows" style="margin-top: 24px;">
+          <div class="row"><div class="idx">A</div><div class="label" style="font-size: 24px;">R$ <span class="num">4,33</span> / km</div><div class="desc">Receita por quilômetro da proposta acima do custo operacional do carro.</div></div>
+          <div class="row"><div class="idx">B</div><div class="label" style="font-size: 24px;">R$ <span class="num">82,20</span> / hora</div><div class="desc">Projeção de ganho por hora, já considerando deslocamento e tempo total.</div></div>
+          <div class="row"><div class="idx">C</div><div class="label" style="font-size: 24px;">Nota <span class="num">4,93</span> <span style="color:var(--motrix-sand-dim); font-size: 16px;">/ 5</span></div><div class="desc">Veredicto de rentabilidade, em tempo real, antes do aceite.</div></div>
+        </div>
+
+        <div class="proof-tag-row">
+          <div class="tag"><span class="dot"></span>TESTE REAL</div>
+          <div class="tag"><span class="dot"></span>UBER X · TERESINA · 2026</div>
+        </div>
+      </div>
+
+      <div class="proof-media">
+        <div class="app-embed-wrap phone">
+          <iframe class="app-embed" src="Motrix Embed - Mobile.html" title="Motrix — app do motorista (mobile)"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>04 · A solução · prova prática</span>
+      <span>MOTRIX</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 05 — VERSÃO DESKTOP (GESTÃO / DECLARAÇÃO) ====== -->
+<section data-screen-label="05 Versão desktop · gestão">
+  <div class="frame">
+    <div class="topbar">
+      <div class="mark"><span class="glyph"></span><span class="name">MOTRIX</span></div>
+      <div class="nav"><span>05</span><span class="sep">/</span><span>08</span><span class="sep">·</span><span>PLATAFORMA</span></div>
+    </div>
+
+    <div class="desk-grid" style="margin-top: 40px;">
+      <div>
+        <div class="eyebrow">Versão Desktop</div>
+        <div class="rule rule-short" style="margin:18px 0 26px;"></div>
+        <h1 class="h1" style="max-width: 14ch; font-size: 56px;">
+          Do volante à <em>gestão do negócio.</em>
+        </h1>
+        <p class="lead" style="margin-top: 24px; max-width: 38ch;">
+          No computador, a Motrix vira o centro administrativo do motorista — onde os dados das corridas viram declaração, imposto e decisão.
+        </p>
+
+        <div class="rows" style="margin-top: 22px;">
+          <div class="row"><div class="idx">01</div><div class="label" style="font-size: 24px;"><em>Enquadramento MEI</em></div><div class="desc">Faturamento acompanhado contra o teto, com alerta antes de estourar o limite.</div></div>
+          <div class="row"><div class="idx">02</div><div class="label" style="font-size: 24px;"><em>Imposto e DAS</em></div><div class="desc">Guia DAS-MEI e extrato pronto para a declaração de IR, sem planilha.</div></div>
+          <div class="row"><div class="idx">03</div><div class="label" style="font-size: 24px;"><em>Relatórios</em></div><div class="desc">Receita, custos e lucro exportáveis em PDF e CSV, por período.</div></div>
+        </div>
+      </div>
+
+      <div class="proof-media" style="align-items: center;">
+        <div class="app-embed-wrap desktop" style="--embed-scale: 0.78;">
+          <iframe class="app-embed" src="Motrix Embed - Desktop (Gestao).html" title="Motrix — plataforma desktop (gestão e declaração)"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>05 · Versão desktop · gestão e declaração</span>
+      <span>MOTRIX</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 06 — VIABILIDADE I: CUSTOS E OPERAÇÃO ====== -->
+<section data-screen-label="06 Viabilidade · custos e operação">
+  <div class="frame">
+    <div class="topbar">
+      <div class="mark"><span class="glyph"></span><span class="name">MOTRIX</span></div>
+      <div class="nav"><span>06</span><span class="sep">/</span><span>08</span><span class="sep">·</span><span>VIABILIDADE · CUSTOS</span></div>
+    </div>
+
+    <div style="margin-top:44px;">
+      <div class="eyebrow">Viabilidade · Estrutura de Custos e Operação</div>
+      <div class="rule rule-short" style="margin:18px 0 22px;"></div>
+      <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap: 64px; align-items: end;">
+        <h1 class="h1" style="max-width: 20ch; font-size: 52px;">
+          Cada parte do modelo <em>se paga.</em>
+        </h1>
+        <p class="body" style="max-width: 40ch; font-size: 17px;">O sensor é vendido, não subsidiado: ele financia a própria distribuição. A assinatura é margem quase pura e sustenta a operação.</p>
+      </div>
+    </div>
+
+    <div class="flow" style="margin-top: 18px;">
+      <div class="step">
+        <div class="st-ix">HARDWARE · POR UNIDADE</div>
+        <h3 class="st-h">O <em>sensor</em> se paga</h3>
+        <div class="st-v">R$ 35</div>
+        <div class="st-d">Vendido a R$ 130, custo de R$ 95 (sensor + logística). Cada venda gera caixa em vez de consumir — margem de R$ 35.</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="step">
+        <div class="st-ix">ASSINATURA · POR MÊS</div>
+        <h3 class="st-h">A <em>recorrência</em> sustenta</h3>
+        <div class="st-v">R$ 17,40</div>
+        <div class="st-d">Ticket de R$ 19,90/mês com margem de R$ 17,40. Software escala sem custo proporcional por cliente.</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="step">
+        <div class="st-ix">AQUISIÇÃO · POR CLIENTE</div>
+        <h3 class="st-h">O <em>CAC</em> é coberto</h3>
+        <div class="st-v">R$ 30</div>
+        <div class="st-d">Custo de aquisição absorvido pela margem do hardware e pelos canais orgânicos. CAC líquido próximo de zero.</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 30px; padding-top: 22px; border-top: 1.5px solid var(--motrix-rule);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom: 16px;">
+        <span style="font-family: var(--font-serif); font-style: italic; font-size: 22px; color: var(--motrix-sand);">Alocação do capital da rodada</span>
+        <span class="body" style="font-size: 15px; margin: 0;">Seed · R$ 600 mil · runway de 12–18 meses</span>
+      </div>
+      <div class="funds-bar">
+        <div class="fseg f1" style="width:35%;">35%</div>
+        <div class="fseg f2" style="width:30%;">30%</div>
+        <div class="fseg f3" style="width:25%;">25%</div>
+        <div class="fseg f4" style="width:10%;">10%</div>
+      </div>
+      <div class="funds-legend">
+        <div class="fl"><span class="fpct">35%</span><span class="fname">Produto e engenharia</span></div>
+        <div class="fl"><span class="fpct">30%</span><span class="fname">Estoque de sensores</span></div>
+        <div class="fl"><span class="fpct">25%</span><span class="fname">Aquisição de clientes</span></div>
+        <div class="fl"><span class="fpct">10%</span><span class="fname">Operação</span></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>06 · Viabilidade · custos e operação</span>
+      <span>Premissas do plano de negócios</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 07 — VIABILIDADE II: RETORNO E ESCALABILIDADE ====== -->
+<section data-screen-label="07 Viabilidade · retorno e escala">
+  <div class="frame">
+    <div class="topbar">
+      <div class="mark"><span class="glyph"></span><span class="name">MOTRIX</span></div>
+      <div class="nav"><span>07</span><span class="sep">/</span><span>08</span><span class="sep">·</span><span>VIABILIDADE · RETORNO</span></div>
+    </div>
+
+    <div style="margin-top: 40px;">
+      <div style="display:grid; grid-template-columns: 1fr auto; gap: 64px; align-items: end;">
+        <div>
+          <div class="eyebrow">Viabilidade · Retorno e Escalabilidade</div>
+          <div class="rule rule-short" style="margin:18px 0 22px;"></div>
+          <h1 class="h1" style="max-width: 20ch; font-size: 52px;">
+            Capital eficiente, <em>receita que compõe.</em>
+          </h1>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px; max-width: 24ch; text-align: right;">
+          <span style="font-family:var(--font-sans); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--motrix-sand); font-weight:600;">TAM · América Latina</span>
+          <div style="font-family: var(--font-num); font-size: 58px; font-weight: 800; letter-spacing: -0.04em; color: var(--motrix-sand); line-height: 0.95;">R$ 3,8 bi</div>
+          <span class="body" style="font-size: 14px; margin: 0;">16M motoristas e entregadores × R$ 19,90/mês ao ano</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="lever-grid" style="margin-top: 36px;">
+      <div class="lever">
+        <div class="lv-ix">VALOR DO CLIENTE</div>
+        <div class="lv-v">R$ 316</div>
+        <div class="lv-k">LTV · churn 5,5%/mês</div>
+        <div class="lv-d">Cada cliente vale mais de dez vezes o que custa para conquistá-lo.</div>
+      </div>
+      <div class="lever">
+        <div class="lv-ix">EFICIÊNCIA</div>
+        <div class="lv-v">10,5<span class="sm">×</span></div>
+        <div class="lv-k">Relação LTV / CAC</div>
+        <div class="lv-d">Muito acima do mínimo saudável de 3×. CAC de R$ 30, coberto pelo hardware.</div>
+      </div>
+      <div class="lever">
+        <div class="lv-ix">RETORNO</div>
+        <div class="lv-v">1,7<span class="sm"> mês</span></div>
+        <div class="lv-k">Payback do CAC</div>
+        <div class="lv-d">O custo de aquisição volta em menos de dois meses de assinatura.</div>
+      </div>
+      <div class="lever">
+        <div class="lv-ix">EQUILÍBRIO</div>
+        <div class="lv-v">Mês 8–12</div>
+        <div class="lv-k">Break-even operacional</div>
+        <div class="lv-d">Resultado mensal positivo já dentro do primeiro ano.</div>
+      </div>
+    </div>
+
+    <div class="scn-table" style="margin-top: 34px;">
+      <div class="cell head label-cell"><span class="rk">Cenário <em>Ano 5</em></span></div>
+      <div class="cell head"><span class="col-tag cons"><span class="dot"></span>Conservador</span></div>
+      <div class="cell head"><span class="col-tag base"><span class="dot"></span>Base</span></div>
+      <div class="cell head"><span class="col-tag otim"><span class="dot"></span>Otimista</span></div>
+
+      <div class="cell label-cell"><span class="kk" style="font-size:13px; letter-spacing:0; text-transform:none; color:var(--motrix-ink);">Receita anual</span></div>
+      <div class="cell scn-cons"><div class="vv">R$ 15M</div></div>
+      <div class="cell scn-base"><div class="vv">R$ 30M</div></div>
+      <div class="cell scn-otim"><div class="vv">R$ 46M</div></div>
+
+      <div class="cell label-cell"><span class="kk" style="font-size:13px; letter-spacing:0; text-transform:none; color:var(--motrix-ink);">Margem líquida</span></div>
+      <div class="cell scn-cons"><div class="vv">28%</div></div>
+      <div class="cell scn-base"><div class="vv">39%</div></div>
+      <div class="cell scn-otim"><div class="vv">45%</div></div>
+    </div>
+
+    <div class="footer" style="margin-top: 22px;">
+      <span>07 · Viabilidade · retorno e escala</span>
+      <span>Cenário base · plano de negócios</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 08 — FECHAMENTO ====== -->
+<section data-screen-label="08 Fechamento">
+  <svg class="bg-mountain" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMax slice">
+    <path d="M 0 880 L 220 720 L 340 800 L 540 540 L 760 740 L 980 480 L 1240 700 L 1480 560 L 1700 780 L 1920 660 L 1920 1080 L 0 1080 Z" fill="#ccbfa7" opacity="0.06"></path>
+    <path d="M 0 940 L 240 820 L 460 880 L 700 700 L 900 820 L 1140 660 L 1380 800 L 1620 720 L 1920 820 L 1920 1080 L 0 1080 Z" fill="#ccbfa7" opacity="0.04"></path>
+  </svg>
+
+  <div class="frame">
+    <div class="topbar">
+      <div class="mark"><span class="glyph"></span><span class="name">MOTRIX</span></div>
+      <div class="nav"><span>08</span><span class="sep">/</span><span>08</span><span class="sep">·</span><span>A TESE</span></div>
+    </div>
+
+    <div style="margin-top: 60px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <div class="eyebrow" style="margin-bottom: 30px;">A Tese</div>
+      <h1 class="huge" style="max-width: 16ch;">
+        Movimento vira dado.<br>
+        Dado vira <em>decisão.</em><br>
+        Decisão vira <em>lucro.</em>
+      </h1>
+
+      <div class="col-2" style="margin-top: 68px; gap: 96px; align-items: end;">
+        <p class="lead" style="max-width: 46ch;">A Motrix é a primeira plataforma de inteligência operacional para motoristas autônomos da América Latina. O sensor é o ponto de partida o valor está na base de dados e na inteligência construída sobre ela.</p>
+
+        <div style="display: flex; flex-direction: column; gap: 20px; padding-left: 48px; border-left: 1.5px solid var(--motrix-sand);">
+          <div>
+            <div style="font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--motrix-sand-dim); font-weight: 600;">CONTATO</div>
+            <div style="font-family: var(--font-serif); font-style: italic; font-size: 34px; color: var(--motrix-sand); margin-top: 8px; line-height: 1.1;">contato@motrix.com.br</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding-top: 18px; border-top: 1px solid var(--motrix-rule);">
+            <span style="font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--motrix-sand-dim); font-weight: 600;">Contato</span>
+            <span style="font-family: var(--font-sans); font-size: 18px; color: var(--motrix-ink); font-weight: 500;">contato@motrix.com.br</span>
+            <span style="font-family: var(--font-sans); font-size: 18px; color: var(--motrix-ink); font-weight: 500;">motrix.com.br</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>08 · Obrigado</span><span>MOTRIX · 2026</span>
+    </div>
+  </div>
+</section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+
+</body>
+</html>
